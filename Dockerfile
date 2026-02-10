@@ -5,11 +5,13 @@ RUN apt update && apt install -y \
     cmake \
     git \
     libssl-dev \
-    zlib1g-dev
+    zlib1g-dev \
+    libcurl4-openssl-dev \
+    libboost-all-dev
 
 WORKDIR /app
 
-# ===== СКАЧИВАЕМ TGBOT =====
+# ===== УСТАНОВКА TGBOT =====
 RUN git clone https://github.com/reo7sp/tgbot-cpp.git
 WORKDIR /app/tgbot-cpp
 RUN mkdir build && cd build && cmake .. && make && make install
