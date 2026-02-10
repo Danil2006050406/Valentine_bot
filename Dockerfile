@@ -9,6 +9,13 @@ RUN apt update && apt install -y \
 
 WORKDIR /app
 
+# ===== СКАЧИВАЕМ TGBOT =====
+RUN git clone https://github.com/reo7sp/tgbot-cpp.git
+WORKDIR /app/tgbot-cpp
+RUN mkdir build && cd build && cmake .. && make && make install
+
+WORKDIR /app
+
 COPY . .
 
 RUN cmake . && make
